@@ -1,4 +1,5 @@
-﻿using ChoirApplication.Models;
+﻿using System.Runtime.CompilerServices;
+using ChoirApplication.Models;
 using Newtonsoft.Json;
 
 namespace ChoirApplication.Services;
@@ -12,16 +13,18 @@ internal class MemberService
     {
         _members.Add(member);
         _fileService.SaveToFile(@"c:\Code\members.json", JsonConvert.SerializeObject(_members));
+   
+    }
 
+    private static readonly string filePath = @"c:\Code\members.json";
+    public void ReadFromFile(string filePath)
+    {
+        using var sw = new StreamReader(filePath);
+
+        var content = sw.ReadToEnd();
 
     }
 
-    //public void ViewSpecificMember(Member member)
-    //{
-    //    Console.WriteLine("Se specifik användare");
-
-
-    //}
 
 
 }
