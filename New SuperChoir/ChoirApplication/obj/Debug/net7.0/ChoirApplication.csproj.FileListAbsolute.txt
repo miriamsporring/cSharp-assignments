@@ -1,0 +1,17 @@
+C:\nackademin\cSharp\cSharp-assignments\SuperChoir\ChoirApplication\bin\Debug\net7.0\ChoirApplication.exe
+C:\nackademin\cSharp\cSharp-assignments\SuperChoir\ChoirApplication\bin\Debug\net7.0\ChoirApplication.deps.json
+C:\nackademin\cSharp\cSharp-assignments\SuperChoir\ChoirApplication\bin\Debug\net7.0\ChoirApplication.runtimeconfig.json
+C:\nackademin\cSharp\cSharp-assignments\SuperChoir\ChoirApplication\bin\Debug\net7.0\ChoirApplication.dll
+C:\nackademin\cSharp\cSharp-assignments\SuperChoir\ChoirApplication\bin\Debug\net7.0\ChoirApplication.pdb
+C:\nackademin\cSharp\cSharp-assignments\SuperChoir\ChoirApplication\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\nackademin\cSharp\cSharp-assignments\SuperChoir\ChoirApplication\obj\Debug\net7.0\ChoirApplication.csproj.AssemblyReference.cache
+C:\nackademin\cSharp\cSharp-assignments\SuperChoir\ChoirApplication\obj\Debug\net7.0\ChoirApplication.GeneratedMSBuildEditorConfig.editorconfig
+C:\nackademin\cSharp\cSharp-assignments\SuperChoir\ChoirApplication\obj\Debug\net7.0\ChoirApplication.AssemblyInfoInputs.cache
+C:\nackademin\cSharp\cSharp-assignments\SuperChoir\ChoirApplication\obj\Debug\net7.0\ChoirApplication.AssemblyInfo.cs
+C:\nackademin\cSharp\cSharp-assignments\SuperChoir\ChoirApplication\obj\Debug\net7.0\ChoirApplication.csproj.CoreCompileInputs.cache
+C:\nackademin\cSharp\cSharp-assignments\SuperChoir\ChoirApplication\obj\Debug\net7.0\ChoirApplication.csproj.CopyComplete
+C:\nackademin\cSharp\cSharp-assignments\SuperChoir\ChoirApplication\obj\Debug\net7.0\ChoirApplication.dll
+C:\nackademin\cSharp\cSharp-assignments\SuperChoir\ChoirApplication\obj\Debug\net7.0\refint\ChoirApplication.dll
+C:\nackademin\cSharp\cSharp-assignments\SuperChoir\ChoirApplication\obj\Debug\net7.0\ChoirApplication.pdb
+C:\nackademin\cSharp\cSharp-assignments\SuperChoir\ChoirApplication\obj\Debug\net7.0\ChoirApplication.genruntimeconfig.cache
+C:\nackademin\cSharp\cSharp-assignments\SuperChoir\ChoirApplication\obj\Debug\net7.0\ref\ChoirApplication.dll
