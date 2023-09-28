@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.Design;
+using System.Runtime.ExceptionServices;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using ChoirApplication.Models;
@@ -31,14 +32,15 @@ internal class MenuService
             switch (option)
             {
                 case "1":
-                    AddMemberMenu();
+                    AddMemberMenu(); //Fungerar
                     break;
+
                 case "2":
-                    ViewSpecificMember(); //Fungerar inte 
+                    ViewSpecificMember(); //Fungerar, ska utvecklas, hur?
                     break;
               
                 case "3": 
-                    ViewAllMembers(); //Fungerar inte 
+                    ViewAllMembers(); //Fungerar, ska utveckas, hur?
                     break;
 
 
@@ -51,20 +53,11 @@ internal class MenuService
 
         }while (exit == false);
     }
- 
-    private void ViewSpecificMember()   //Ska visa specifik medlem
-    {
-        
-    }
-
-    private static void ViewAllMembers()   //Ska visa alla medlemmar
-    {
-        
-    }
+    //Case 2
 
 
     //Lägg till medlem case 1
-    public void AddMemberMenu() //CreateMenu: funktion - anmäler ny medlem
+    public void AddMemberMenu() //CreateMenu: funktion - anmäler ny medlem - fungerar
     {
         var member = new Member();
 
@@ -76,12 +69,34 @@ internal class MenuService
 
         Console.Write("Email: ");
         member.Email = Console.ReadLine()!;
+ 
 
         _memberService.AddMemberToList(member);
     }
+
+    private void ViewSpecificMember()   //Ska visa specifik medlem
+    {
+        Console.WriteLine("Ange epostadress");
+        member.Email = Console.ReadLine()!; //sen då??
+
+    }
+
+    private void ViewAllMembers()   //Ska visa alla medlemmar
+    {
+        Console.WriteLine("Visa alla medlemmar");
+        Console.ReadLine();
+        
+    }
+
+
+
 
     
 
 
 }
 
+internal class member
+{
+    internal static string Email;
+}

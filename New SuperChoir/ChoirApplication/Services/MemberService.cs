@@ -16,9 +16,12 @@ internal class MemberService
 
     }
 
-    public void ViewSpecificMember()
-    {
-        Console.WriteLine("Visa specifik användare");
-    }
+    //public void ViewSpecificMember(Member member)
+    //{
+    //    Console.WriteLine("Se specifik användare");
+
+
+    //}
+
 
 }
