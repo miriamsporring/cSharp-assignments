@@ -4,4 +4,5 @@
 
 var menuService = new MenuService();
 
-menuService.AddMemberMenu(); //skickas till funktionen i MenuService
+
+menuService.MainMenu (); //skickas till funktionen i MenuService

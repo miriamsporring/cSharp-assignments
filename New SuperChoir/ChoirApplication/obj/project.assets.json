@@ -61,11 +61,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\nackademin\\cSharp\\cSharp-assignments\\SuperChoir\\ChoirApplication\\ChoirApplication.csproj",
+      "projectUniqueName": "C:\\nackademin\\cSharp\\cSharp-assignments\\New SuperChoir\\ChoirApplication\\ChoirApplication.csproj",
       "projectName": "ChoirApplication",
-      "projectPath": "C:\\nackademin\\cSharp\\cSharp-assignments\\SuperChoir\\ChoirApplication\\ChoirApplication.csproj",
+      "projectPath": "C:\\nackademin\\cSharp\\cSharp-assignments\\New SuperChoir\\ChoirApplication\\ChoirApplication.csproj",
       "packagesPath": "C:\\Users\\mirre\\.nuget\\packages\\",
-      "outputPath": "C:\\nackademin\\cSharp\\cSharp-assignments\\SuperChoir\\ChoirApplication\\obj\\",
+      "outputPath": "C:\\nackademin\\cSharp\\cSharp-assignments\\New SuperChoir\\ChoirApplication\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.ComponentModel.Design;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using ChoirApplication.Models;
 
@@ -9,6 +10,7 @@ internal class MenuService
     private readonly MemberService _memberService = new MemberService();
 
     public void MainMenu()  //fungerar inte, hoppar över, skriver inte ut nånting, går direkt in i AddMemberMenu från MemberService
+                            //Förmodligen eftersom programmet inte länkar hit? Bara till AddMemberMenu.
     {
         var exit = false;
 
@@ -23,7 +25,7 @@ internal class MenuService
 
             Console.WriteLine("0. Avsluta\n");
 
-            Console.WriteLine("Välj ett av ovanstående alternativ (0-4: ");
+            Console.WriteLine("Välj ett av ovanstående alternativ (0-3: ");
             var option = Console.ReadLine();
 
             switch (option)
@@ -31,16 +33,34 @@ internal class MenuService
                 case "1":
                     AddMemberMenu();
                     break;
-
-                default:
+                case "2":
+                    ViewSpecificMember(); //Fungerar inte 
                     break;
+              
+                case "3": 
+                    ViewAllMembers(); //Fungerar inte 
+                    break;
+
+
+                case "0":
+                    exit = true; //Fungerar
+                    break;
+
             }
 
 
         }while (exit == false);
     }
+ 
+    private void ViewSpecificMember()   //Ska visa specifik medlem
+    {
+        
+    }
 
-
+    private static void ViewAllMembers()   //Ska visa alla medlemmar
+    {
+        
+    }
 
 
     //Lägg till medlem case 1
@@ -58,10 +78,10 @@ internal class MenuService
         member.Email = Console.ReadLine()!;
 
         _memberService.AddMemberToList(member);
-
     }
 
-
     
+
+
 }
 
