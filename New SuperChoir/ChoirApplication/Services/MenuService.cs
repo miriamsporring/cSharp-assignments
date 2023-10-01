@@ -1,4 +1,5 @@
-﻿using ChoirApplication.Models;
+﻿using System.Runtime.ExceptionServices;
+using ChoirApplication.Models;
 
 namespace ChoirApplication.Services;
 
@@ -60,6 +61,10 @@ internal class MenuService
     {
         var member = new Member();
 
+        Console.Clear();
+        Console.WriteLine("Anmäl dig till kören");
+        Console.WriteLine("_____________________\n");
+
         Console.Write("Förnamn: ");
         member.FirstName = Console.ReadLine()!;
 
@@ -80,11 +85,14 @@ internal class MenuService
     //Case 2 - visa alla medlemmar
     private void ViewAllMembers()         //hur hämta från lista, via MemberService, FUNGERAR igen!!! 1/10
     {
+        Console.Clear();
         Console.WriteLine("Visa alla medlemmar");
+        Console.WriteLine("___________________\n");
 
         _memberService.GetMembers();
 
-        Console.WriteLine();
+
+
         Console.ReadKey();
 
     }
@@ -92,10 +100,13 @@ internal class MenuService
     //case 3 - visa specifik medlem
     private void ViewSpecificMember()   
     {
-
+        Console.Clear();
         Console.WriteLine("Visa en specifik medlem");
+        Console.WriteLine("_______________________\n");
 
         Console.WriteLine("Ange epostadress: ");
+        //kod för att hämta specifik medlem ur listan/filen
+
         Console.ReadKey();
         _memberService.GetMembers();
 
@@ -108,8 +119,13 @@ internal class MenuService
     //Case 4 - ta bort medlem
     private void RemoveMember()        //hur hämta från lista, via MemberService???
     {
+        Console.Clear() ;
+        Console.WriteLine("Ta bort en medlem ur listan");
+        Console.WriteLine("___________________________\n");
 
-        Console.WriteLine("Ta bort medlem ur listan");
+        //kod för att ta bort medlem ur listan/filen
+
+
         Console.ReadLine();
     }
 

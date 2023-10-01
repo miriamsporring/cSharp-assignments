@@ -23,16 +23,14 @@ internal class MemberService
 
 
         if (!string.IsNullOrEmpty(content))
-            _memberList = JsonConvert.DeserializeObject<List<Member>>(content)!; //listan skrev inte över den existerande filen, bara fyllde på den1/10 13:00
+            _memberList = JsonConvert.DeserializeObject<List<Member>>(content)!; 
         
         
         foreach(var member in _memberList)
         {
-            Console.WriteLine($"{member.FirstName} {member.LastName} <{member.Email}>");
+            Console.WriteLine($"{member.FirstName} {member.LastName} \n<{member.Email}>\n");
         }
 
-        //Console.WriteLine();
-        //Console.ReadKey();
 
     }
 
