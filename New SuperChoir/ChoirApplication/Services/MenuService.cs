@@ -78,13 +78,14 @@ internal class MenuService
     }
 
     //Case 2 - visa alla medlemmar
-    private void ViewAllMembers()         //hur hämta från lista, via MemberService??? Fungerade igår 30/9, inte idag 1/10
+    private void ViewAllMembers()         //hur hämta från lista, via MemberService, FUNGERAR igen!!! 1/10
     {
-
         Console.WriteLine("Visa alla medlemmar");
-        Console.ReadLine();
 
         _memberService.GetMembers();
+
+        Console.WriteLine();
+        Console.ReadKey();
 
     }
 
@@ -92,8 +93,11 @@ internal class MenuService
     private void ViewSpecificMember()   
     {
 
-        Console.WriteLine("Se specifik medlem");
-        Console.ReadLine();
+        Console.WriteLine("Visa en specifik medlem");
+
+        Console.WriteLine("Ange epostadress: ");
+        Console.ReadKey();
+        _memberService.GetMembers();
 
 
     }
@@ -105,7 +109,7 @@ internal class MenuService
     private void RemoveMember()        //hur hämta från lista, via MemberService???
     {
 
-        Console.WriteLine("Ta bort medlem");
+        Console.WriteLine("Ta bort medlem ur listan");
         Console.ReadLine();
     }
 

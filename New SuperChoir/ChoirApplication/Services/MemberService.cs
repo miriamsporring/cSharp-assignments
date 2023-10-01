@@ -6,6 +6,7 @@ namespace ChoirApplication.Services;
 internal class MemberService
 {
     private List<Member> _memberList = new List<Member>(); //listan skapas
+
     public void AddMemberToList(Member member)
     {
         _memberList.Add(member);
@@ -15,17 +16,23 @@ internal class MemberService
     }
 
     public void GetMembers()
+
     {
         var content = FileService.ReadFromFile();
 
+
+
         if (!string.IsNullOrEmpty(content))
-            _memberList = JsonConvert.DeserializeObject<List<Member>>(content)!;
+            _memberList = JsonConvert.DeserializeObject<List<Member>>(content)!; //listan skrev inte över den existerande filen, bara fyllde på den1/10 13:00
         
         
         foreach(var member in _memberList)
         {
             Console.WriteLine($"{member.FirstName} {member.LastName} <{member.Email}>");
         }
+
+        //Console.WriteLine();
+        //Console.ReadKey();
 
     }
 
