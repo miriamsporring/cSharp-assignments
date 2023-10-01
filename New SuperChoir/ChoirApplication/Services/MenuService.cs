@@ -91,8 +91,6 @@ internal class MenuService
 
         _memberService.GetMembers();
 
-
-
         Console.ReadKey();
 
     }

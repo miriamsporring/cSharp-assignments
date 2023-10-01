@@ -28,50 +28,11 @@ internal class MemberService
         
         foreach(var member in _memberList)
         {
-            Console.WriteLine($"{member.FirstName} {member.LastName} \n<{member.Email}>\n");
+            Console.WriteLine($"Namn: {member.FirstName} {member.LastName}\nTele: {member.PhoneNumber} \nEpost: <{member.Email}>\n___________________\n");
         }
 
 
     }
 
-
-
-
-    //private static readonly string filePath = @"c:\Code\members.json";
-    //public void ReadFromFile(string filePath)
-    //{
-    //    using var sw = new StreamReader(filePath); //hur får jag ut det i menuservice?
-    //    var content = sw.ReadToEnd();
-    //    Console.ReadLine();
-
-    //}
-
-
-
-
-
-
-    //internal void ViewAllMembers(object member)
-    //{
-    //    string filePath = @"c:\Code\members.json"; // Ange sökvägen till din fil
-
-    //    try
-    //    {
-    //        // Öppna filen för läsning med hjälp av StreamReader
-    //        using (StreamReader sr = new StreamReader(filePath))
-    //        {
-    //            // Läs innehållet av filen
-    //            string fileContent = sr.ReadToEnd();
-
-    //            // Visa innehållet på konsolen
-    //            Console.WriteLine("Alla medlemmar i kören:");
-    //            Console.WriteLine(fileContent);
-    //        }
-    //    }
-    //    catch (IOException e)
-    //    {
-    //        Console.WriteLine("Ett fel uppstod när filen skulle läsas: " + e.Message);
-    //    }
-    //}
 
 }
