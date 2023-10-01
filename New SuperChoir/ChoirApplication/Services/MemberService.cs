@@ -1,30 +1,72 @@
-﻿using System.Runtime.CompilerServices;
-using ChoirApplication.Models;
+﻿using ChoirApplication.Models;
 using Newtonsoft.Json;
 
 namespace ChoirApplication.Services;
 
 internal class MemberService
 {
-    private List<Member> _members = new List<Member>(); //listan skapas
-    private readonly FileService _fileService = new FileService();
-
+    private List<Member> _memberList = new List<Member>(); //listan skapas
     public void AddMemberToList(Member member)
     {
-        _members.Add(member);
-        _fileService.SaveToFile(@"c:\Code\members.json", JsonConvert.SerializeObject(_members));
-   
+        _memberList.Add(member);
+
+        var json = JsonConvert.SerializeObject(_memberList);
+        FileService.SaveToFile(json); //listan skrivs till fil
     }
 
-    private static readonly string filePath = @"c:\Code\members.json";
-    public void ReadFromFile(string filePath)
+    public void GetMembers()
     {
-        using var sw = new StreamReader(filePath);
+        var content = FileService.ReadFromFile();
 
-        var content = sw.ReadToEnd();
+        if (!string.IsNullOrEmpty(content))
+            _memberList = JsonConvert.DeserializeObject<List<Member>>(content)!;
+        
+        
+        foreach(var member in _memberList)
+        {
+            Console.WriteLine($"{member.FirstName} {member.LastName} <{member.Email}>");
+        }
 
     }
 
 
+
+
+    //private static readonly string filePath = @"c:\Code\members.json";
+    //public void ReadFromFile(string filePath)
+    //{
+    //    using var sw = new StreamReader(filePath); //hur får jag ut det i menuservice?
+    //    var content = sw.ReadToEnd();
+    //    Console.ReadLine();
+
+    //}
+
+
+
+
+
+
+    //internal void ViewAllMembers(object member)
+    //{
+    //    string filePath = @"c:\Code\members.json"; // Ange sökvägen till din fil
+
+    //    try
+    //    {
+    //        // Öppna filen för läsning med hjälp av StreamReader
+    //        using (StreamReader sr = new StreamReader(filePath))
+    //        {
+    //            // Läs innehållet av filen
+    //            string fileContent = sr.ReadToEnd();
+
+    //            // Visa innehållet på konsolen
+    //            Console.WriteLine("Alla medlemmar i kören:");
+    //            Console.WriteLine(fileContent);
+    //        }
+    //    }
+    //    catch (IOException e)
+    //    {
+    //        Console.WriteLine("Ett fel uppstod när filen skulle läsas: " + e.Message);
+    //    }
+    //}
 
 }

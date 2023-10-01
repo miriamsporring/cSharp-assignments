@@ -1,18 +1,15 @@
-﻿
+﻿namespace ChoirApplication.Services;
 
-using ChoirApplication.Models;
-using Newtonsoft.Json;
-
-namespace ChoirApplication.Services;
 
 internal class FileService //här finns listan/filen
 {
+  
     private static readonly string filePath = @"c:\Code\members.json";
-    public void SaveToFile(string filePath, string content)
+    public static void SaveToFile(string content)
 
     {
         using var sw = new StreamWriter(filePath);
-        sw.Write(content);
+        sw.WriteLine(content);
     }
 
     public static string ReadFromFile()
@@ -21,6 +18,7 @@ internal class FileService //här finns listan/filen
         {
             using var sr = new StreamReader(filePath);
             return sr.ReadToEnd();
+
         }
         return null!;
     }

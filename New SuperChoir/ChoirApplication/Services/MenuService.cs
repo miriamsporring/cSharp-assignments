@@ -4,7 +4,7 @@ namespace ChoirApplication.Services;
 
 internal class MenuService
 {
-    private readonly MemberService _memberService = new MemberService();
+    private MemberService _memberService = new MemberService();
 
     public void MainMenu()  
     {
@@ -16,11 +16,11 @@ internal class MenuService
             Console.WriteLine("Varmt välkommen till Super Choir!");
             Console.WriteLine("_________________________________\n");
             Console.WriteLine("1. Anmäl dig till kören \n");
-            Console.WriteLine("2. Visa en specifik medlem \n");
-            Console.WriteLine("3. Visa alla medlemmar \n");
+            Console.WriteLine("2. Visa alla medlemmar \n");
+            Console.WriteLine("3. Visa en specifik medlem \n");
             Console.WriteLine("4. Ta bort medlem ur listan \n");
             Console.WriteLine("0. Avsluta\n");
-            Console.WriteLine("Välj ett av ovanstående alternativ (0-4: ");
+            Console.WriteLine("Välj ett av ovanstående alternativ (0-4): ");
             var option = Console.ReadLine();
 
             switch (option)
@@ -31,11 +31,12 @@ internal class MenuService
                     break;
 
                 case "2":
-                    ViewSpecificMember(); //Hittar caset, ska utvecklas, hur? från lista via epost, hur?
-                    break;
-              
-                case "3": 
                     ViewAllMembers(); //Hittar caset, ska utveckas, hur? från lista
+                    break; 
+
+              
+                case "3":
+                    ViewSpecificMember(); //Hittar caset, ska utvecklas, hur? från lista via epost, hur?
                     break;
 
                 case "4":
@@ -54,11 +55,8 @@ internal class MenuService
 
 
 
-    //Case 2
-
-
     //Lägg till medlem case 1
-    public void AddMemberMenu() //CreateMenu: funktion - anmäler ny medlem - fungerar, jihooo
+    public void AddMemberMenu() //CreateMenu: funktion - anmäler ny medlem - FUNGERAR, jihooo
     {
         var member = new Member();
 
@@ -74,25 +72,33 @@ internal class MenuService
         Console.Write("Epost: ");
         member.Email = Console.ReadLine()!;
  
-
         _memberService.AddMemberToList(member);
-    }
 
-    //case 2 - visa specifik medlem
-    private void ViewSpecificMember()   
-    {
-        Console.WriteLine("Ange epostadress");
-        Console.ReadLine();
-
-    }
-
-    //Case 3 - visa alla medlemmar
-    private void ViewAllMembers()         //hur hämta från lista, via MemberService???
-    {
-        Console.WriteLine("Visa alla medlemmar"); 
-        Console.ReadLine();
         
     }
+
+    //Case 2 - visa alla medlemmar
+    private void ViewAllMembers()         //hur hämta från lista, via MemberService??? Fungerade igår 30/9, inte idag 1/10
+    {
+
+        Console.WriteLine("Visa alla medlemmar");
+        Console.ReadLine();
+
+        _memberService.GetMembers();
+
+    }
+
+    //case 3 - visa specifik medlem
+    private void ViewSpecificMember()   
+    {
+
+        Console.WriteLine("Se specifik medlem");
+        Console.ReadLine();
+
+
+    }
+
+    
 
 
     //Case 4 - ta bort medlem
