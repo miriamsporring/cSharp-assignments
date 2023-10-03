@@ -37,11 +37,11 @@ internal class MenuService
 
               
                 case "3":
-                    ViewSpecificMember(); //Hittar caset, ska utvecklas, hur? från lista via epost, hur?
+                    ViewSpecificMember(); //Hittar caset, ska utvecklas, hur? från lista via epost, hur? FUNGERAR
                     break;
 
                 case "4":
-                    RemoveMember(); //Hittar caset, ska utveckas, hur? hitta från lista via epost, sen ta bort
+                    RemoveMember(); //Hittar caset, ska utveckas, hur? hitta från lista via epost, sen ta bort FUNGERAR INTE ÄN
                     break;
 
 
@@ -53,8 +53,6 @@ internal class MenuService
         }while (exit == false);
 
     }
-
-
 
     //Lägg till medlem case 1
     public void AddMemberMenu() //CreateMenu: funktion - anmäler ny medlem - FUNGERAR, jihooo
@@ -76,10 +74,11 @@ internal class MenuService
 
         Console.Write("Epost: ");
         member.Email = Console.ReadLine()!;
+
+        
  
         _memberService.AddMemberToList(member);
 
-        
     }
 
     //Case 2 - visa alla medlemmar
@@ -89,42 +88,43 @@ internal class MenuService
         Console.WriteLine("Visa alla medlemmar");
         Console.WriteLine("___________________\n");
 
-        _memberService.GetMembers();
+        foreach (var member in _memberService.GetMembers())
+            Console.WriteLine($"{member.FirstName} {member.LastName}");
 
         Console.ReadKey();
 
     }
 
-    //case 3 - visa specifik medlem
-    private void ViewSpecificMember()   
+    //case 3 - visa specifik medlem - kopplar till memberservice, fortsätt där
+    private void ViewSpecificMember()           //kod för att hämta specifik medlem ur listan/filen
     {
         Console.Clear();
         Console.WriteLine("Visa en specifik medlem");
         Console.WriteLine("_______________________\n");
 
         Console.WriteLine("Ange epostadress: ");
-        //kod för att hämta specifik medlem ur listan/filen
+        var email = Console.ReadLine();
+
+        var member = _memberService.ViewSpecificMember(email!);
+        Console.WriteLine($"{member.FirstName} {member.LastName}");
 
         Console.ReadKey();
-        _memberService.GetMembers();
-
-
     }
 
-    
-
-
     //Case 4 - ta bort medlem
-    private void RemoveMember()        //hur hämta från lista, via MemberService???
+    private void RemoveMember()    //kopplas till memberservice, fortsätt där
     {
-        Console.Clear() ;
-        Console.WriteLine("Ta bort en medlem ur listan");
-        Console.WriteLine("___________________________\n");
+        //Console.Clear();
+        //Console.WriteLine("Ta bort en medlem ur listan");
+        //Console.WriteLine("___________________________\n");
 
-        //kod för att ta bort medlem ur listan/filen
+        //Console.WriteLine("Ange epostadress: ");
+        //var email = Console.ReadLine();
 
 
-        Console.ReadLine();
+        //var member = _memberService.RemoveMember(email!);
+
+        //_memberService.RemoveMember(null!);
     }
 
 }
