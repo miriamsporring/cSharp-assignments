@@ -1,5 +1,4 @@
-﻿using System.Runtime.ExceptionServices;
-using ChoirApplication.Models;
+﻿using ChoirApplication.Models;
 
 namespace ChoirApplication.Services;
 
@@ -7,6 +6,7 @@ internal class MenuService
 {
     private MemberService _memberService = new MemberService();
 
+    //för min egen skull i mitt första egna projekt har jag lagt de olika menyalternativen under varann för att lätt se dem i ordning.
     public void MainMenu()  
     {
         var exit = false;
@@ -16,11 +16,11 @@ internal class MenuService
             Console.Clear();
             Console.WriteLine("Varmt välkommen till Super Choir!");
             Console.WriteLine("_________________________________\n");
-            Console.WriteLine("1. Anmäl dig till kören \n");
+            Console.WriteLine("1. Lägg till en medlem \n");
             Console.WriteLine("2. Visa alla medlemmar \n");
             Console.WriteLine("3. Visa en specifik medlem \n");
-            Console.WriteLine("4. Ta bort medlem ur listan \n");
-            Console.WriteLine("0. Avsluta\n");
+            Console.WriteLine("4. Ta bort en medlem ur listan \n");
+            Console.WriteLine("0. Avsluta programmet\n");
             Console.WriteLine("Välj ett av ovanstående alternativ (0-4): ");
             var option = Console.ReadLine();
 
@@ -28,25 +28,24 @@ internal class MenuService
             {
                 case "1":
                     
-                    AddMemberMenu(); //Fungerar , if-else någonstans ang hur full kören är - VÄNTA MED DET, GÖR ALLT ANNAT KLART FÖRST
+                    AddMemberMenu();
                     break;
 
                 case "2":
-                    ViewAllMembers(); //Hittar caset, ska utveckas, hur? från lista
+                    ViewAllMembers();
                     break; 
-
               
                 case "3":
-                    ViewSpecificMember(); //Hittar caset, ska utvecklas, hur? från lista via epost, hur? FUNGERAR
+                    ViewSpecificMember(); 
                     break;
 
                 case "4":
-                    RemoveMember(); //Hittar caset, ska utveckas, hur? hitta från lista via epost, sen ta bort FUNGERAR INTE ÄN
+                    RemoveMember(); 
                     break;
 
 
                 case "0":
-                    exit = true; //Fungerar
+                    exit = true;
                     break;
             }
 
@@ -54,14 +53,14 @@ internal class MenuService
 
     }
 
-    //Lägg till medlem case 1
-    public void AddMemberMenu() //CreateMenu: funktion - anmäler ny medlem - FUNGERAR, jihooo
+    //Case 1 - lägg till en medlem
+    public void AddMemberMenu() 
     {
         var member = new Member();
 
         Console.Clear();
-        Console.WriteLine("Anmäl dig till kören");
-        Console.WriteLine("_____________________\n");
+        Console.WriteLine("Lägg till en medlem");
+        Console.WriteLine("___________________\n");
 
         Console.Write("Förnamn: ");
         member.FirstName = Console.ReadLine()!;
@@ -74,15 +73,16 @@ internal class MenuService
 
         Console.Write("Epost: ");
         member.Email = Console.ReadLine()!;
-
-        
- 
+              
         _memberService.AddMemberToList(member);
 
+        Console.Clear() ;
+        Console.WriteLine("Medlemmen är tillagd");
+        Console.ReadKey();
     }
 
     //Case 2 - visa alla medlemmar
-    private void ViewAllMembers()         //hur hämta från lista, via MemberService, FUNGERAR igen!!! 1/10
+    private void ViewAllMembers()       
     {
         Console.Clear();
         Console.WriteLine("Visa alla medlemmar");
@@ -92,12 +92,13 @@ internal class MenuService
             Console.WriteLine($"{member.FirstName} {member.LastName}");
 
         Console.ReadKey();
-
     }
 
-    //case 3 - visa specifik medlem - kopplar till memberservice, fortsätt där
-    private void ViewSpecificMember()           //kod för att hämta specifik medlem ur listan/filen
+
+    //case 3 - visa specifik medlem
+    private void ViewSpecificMember()   
     {
+          
         Console.Clear();
         Console.WriteLine("Visa en specifik medlem");
         Console.WriteLine("_______________________\n");
@@ -105,26 +106,52 @@ internal class MenuService
         Console.WriteLine("Ange epostadress: ");
         var email = Console.ReadLine();
 
+        Console.Clear();
         var member = _memberService.ViewSpecificMember(email!);
-        Console.WriteLine($"{member.FirstName} {member.LastName}");
+
+        if (email == null || member == null)
+
+            Console.WriteLine("Personen är inte medlem i kören");
+
+        else
+            Console.WriteLine($"{member.FirstName} {member.LastName}");
+
 
         Console.ReadKey();
     }
 
     //Case 4 - ta bort medlem
-    private void RemoveMember()    //kopplas till memberservice, fortsätt där
+    private void RemoveMember()   //tar bort oavsett om medlemmen finns
     {
-        //Console.Clear();
-        //Console.WriteLine("Ta bort en medlem ur listan");
-        //Console.WriteLine("___________________________\n");
+        Console.Clear();
+        Console.WriteLine("Ta bort en medlem ur listan");
+        Console.WriteLine("___________________________\n");
 
-        //Console.WriteLine("Ange epostadress: ");
-        //var email = Console.ReadLine();
+        Console.WriteLine("Ange epostadress: ");
+        var email = Console.ReadLine();
 
 
-        //var member = _memberService.RemoveMember(email!);
+        if (!string.IsNullOrEmpty(email))
+        {
+            var member = _memberService.ViewSpecificMember(email);
+            if (member != null)
+            {
+                _memberService.RemoveMember(email);
 
-        //_memberService.RemoveMember(null!);
+                Console.Clear();
+                Console.WriteLine("Medlemmen är borttagen");
+
+            } 
+            else
+            {
+                Console.WriteLine("Personen är inte medlem i kören");
+            }
+        }
+        else
+            Console.WriteLine("Du måste ange en e-postadress");
+
+        Console.ReadKey();
+
     }
 
 }

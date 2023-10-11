@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChoirApplication", "ChoirApplication\ChoirApplication.csproj", "{899540CD-3C1C-4459-82CC-425FA1A7E2E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChoirApplication", "ChoirApplication\ChoirApplication.csproj", "{899540CD-3C1C-4459-82CC-425FA1A7E2E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChoirApplication.Tests", "ChoirApplication.Tests\ChoirApplication.Tests.csproj", "{8E8947BC-80A5-4FE8-AAF6-C0B098BFE2D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{899540CD-3C1C-4459-82CC-425FA1A7E2E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{899540CD-3C1C-4459-82CC-425FA1A7E2E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{899540CD-3C1C-4459-82CC-425FA1A7E2E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E8947BC-80A5-4FE8-AAF6-C0B098BFE2D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E8947BC-80A5-4FE8-AAF6-C0B098BFE2D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E8947BC-80A5-4FE8-AAF6-C0B098BFE2D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E8947BC-80A5-4FE8-AAF6-C0B098BFE2D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

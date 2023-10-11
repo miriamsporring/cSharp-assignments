@@ -12,7 +12,7 @@ internal class FileService //här finns listan/filen
         sw.WriteLine(content);
     }
 
-    public static string ReadFromFile()
+    public static string ReadFromFile() //TEST
     {
         if (File.Exists(filePath))
         {

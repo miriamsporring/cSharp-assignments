@@ -1,5 +1,4 @@
-﻿using System.Security.Cryptography.X509Certificates;
-using ChoirApplication.Models;
+﻿using ChoirApplication.Models;
 using Newtonsoft.Json;
 
 namespace ChoirApplication.Services;
@@ -8,18 +7,23 @@ internal class MemberService
 {
     private List<Member> _memberList = new List<Member>(); //listan skapas
 
+    public MemberService()
+    {
+        GetMembers(); //varje gång programmet startas hämtas medlemmarna
+    }
 
 
-    //ADD MEMBER TO LIST - FUNGERAR
+    //Lägg till medlem i listan
     public void AddMemberToList(Member member)
     {
+
         _memberList.Add(member);
 
         var json = JsonConvert.SerializeObject(_memberList);
         FileService.SaveToFile(json); //listan skrivs till fil
     }
 
-    //GET MEMBERS - FUNGERAR
+    //Visa medlemmar
     public List<Member> GetMembers()
 
     {
@@ -31,29 +35,30 @@ internal class MemberService
         return _memberList;
     }
 
-    //VIEW SPECIFIC MEMBER - TO DO
+    //Visa specifik medlem
     public Member ViewSpecificMember(string email)
     {
-        Console.Clear();
-
         var member = _memberList.FirstOrDefault(x => x.Email == email);
         return member ?? null!;
     }
 
 
 
-    //REMOVE MEMBER - TO DO
-    public Member RemoveMember(string email)
+    //Ta bort medlem
+    public void RemoveMember(string email)
     {
-       
-        //var member = _memberList.FirstOrDefault(x => x.Email == email);
+
+        var member = _memberList.FirstOrDefault(x => x.Email == email);
         
-        //RemoveMember(email!);
-        return (null!);
+
+        if (member != null)
+        
+                _memberList.Remove(member);
+
+                var json = JsonConvert.SerializeObject(_memberList);
+                FileService.SaveToFile(json); //listan skrivs till fil
+            
     }
-
-
-
 
 }
 
