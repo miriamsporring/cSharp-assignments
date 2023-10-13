@@ -1,23 +1,31 @@
-﻿namespace ChoirApplication.Tests.UnitTests;
+﻿using ChoirApplication.Services;
+using Xunit;
+
+namespace ChoirApplication.Tests.UnitTests;
 
 public class FileService_UnitTest
 {
+
     [Fact]
-    public void Should_ReadFromFile_WhenFileDoesNotExist_AndReturnNull()
+    public void ShouldReadFromFile_AndReturnNull_WhenFileDoesNotExist()
+
     {
+        
         //Arrange
-        fileService = new FileService();
+        FileService fileService = new FileService();
+        string filePath = "fakefile.txt";
+
 
         //Act
-        string result = fileService.ReadFromFile(fakeFilePath);
+        IEnumerable<string> result = ReadFromFile(filePath);
 
 
         //Assert
         Assert.Null(result);
 
 
-
     }
 
 
+   
 }

@@ -2,7 +2,7 @@
 
 namespace ChoirApplication.Services;
 
-internal class MenuService
+public class MenuService
 {
     private MemberService _memberService = new MemberService();
 
@@ -109,11 +109,14 @@ internal class MenuService
         Console.Clear();
         var member = _memberService.ViewSpecificMember(email!);
 
+
         if (email == null || member == null)
 
+            
             Console.WriteLine("Personen är inte medlem i kören");
 
         else
+            
             Console.WriteLine($"{member.FirstName} {member.LastName}");
 
 
@@ -144,6 +147,7 @@ internal class MenuService
             } 
             else
             {
+                Console.Clear();
                 Console.WriteLine("Personen är inte medlem i kören");
             }
         }

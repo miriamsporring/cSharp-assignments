@@ -1,9 +1,10 @@
 ﻿using System.Linq.Expressions;
+using System.Reflection.Metadata.Ecma335;
 
 namespace ChoirApplication.Services;
 
 
-internal class FileService //här finns listan/filen
+public class FileService //här finns listan/filen
 {
   
     private static readonly string filePath = @"c:\Code\members.json";
@@ -14,30 +15,28 @@ internal class FileService //här finns listan/filen
         sw.WriteLine(content);
     }
 
+    public static string ReadFromFile() 
 
-    public static string ReadFromFile() //TEST
     {
 
-        if (File.Exists(filePath))
-        {
-            using var sr = new StreamReader(filePath);
-            return sr.ReadToEnd();
-        }
 
         try
         {
 
+            if (File.Exists(filePath))
+            {
+                using var sr = new StreamReader(filePath);
+                return sr.ReadToEnd();
+
+            }
         }
         catch { }
 
         return null!;
 
     }
-        
-        
-            
-        
 
- }
+
+}
 
 
