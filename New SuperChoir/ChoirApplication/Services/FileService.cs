@@ -1,4 +1,6 @@
-﻿namespace ChoirApplication.Services;
+﻿using System.Linq.Expressions;
+
+namespace ChoirApplication.Services;
 
 
 internal class FileService //här finns listan/filen
@@ -12,15 +14,30 @@ internal class FileService //här finns listan/filen
         sw.WriteLine(content);
     }
 
+
     public static string ReadFromFile() //TEST
     {
+
         if (File.Exists(filePath))
         {
             using var sr = new StreamReader(filePath);
             return sr.ReadToEnd();
+        }
+
+        try
+        {
 
         }
-        return null!;
-    }
+        catch { }
 
-}
+        return null!;
+
+    }
+        
+        
+            
+        
+
+ }
+
+
