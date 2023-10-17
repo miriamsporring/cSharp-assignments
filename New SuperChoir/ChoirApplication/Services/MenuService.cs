@@ -90,10 +90,8 @@ public class MenuService
 
         foreach (var member in _memberService.GetMembers())
             Console.WriteLine($"{member.FirstName} {member.LastName}");
-
-        Console.ReadKey();
+            Console.ReadKey();
     }
-
 
     //case 3 - visa specifik medlem
     private void ViewSpecificMember()   
@@ -118,7 +116,6 @@ public class MenuService
         else
             
             Console.WriteLine($"{member.FirstName} {member.LastName}");
-
 
         Console.ReadKey();
     }
@@ -155,7 +152,6 @@ public class MenuService
             Console.WriteLine("Du måste ange en e-postadress");
 
         Console.ReadKey();
-
     }
 
 }

@@ -15,11 +15,9 @@ public class FileService //här finns listan/filen
         sw.WriteLine(content);
     }
 
-    public static string ReadFromFile() 
+    public static string ReadFromFile(string filePath) //Behöver ha en funktion i testet för att det ska bli grönt
 
     {
-
-
         try
         {
 
@@ -27,8 +25,8 @@ public class FileService //här finns listan/filen
             {
                 using var sr = new StreamReader(filePath);
                 return sr.ReadToEnd();
-
             }
+           
         }
         catch { }
 

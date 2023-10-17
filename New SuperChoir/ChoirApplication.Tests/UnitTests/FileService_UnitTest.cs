@@ -17,7 +17,8 @@ public class FileService_UnitTest
 
 
         //Act
-        IEnumerable<string> result = ReadFromFile(filePath);
+
+        string result = FileService.ReadFromFile(filePath); //behöver funktion i FileService
 
 
         //Assert
@@ -26,6 +27,4 @@ public class FileService_UnitTest
 
     }
 
-
-   
 }

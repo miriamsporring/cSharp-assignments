@@ -5,15 +5,15 @@ namespace ChoirApplication.Services;
 
 internal class MemberService
 {
-    private List<Member> _memberList = new List<Member>(); //listan skapas
+    //Skapar listan
+    private List<Member> _memberList = new List<Member>(); 
 
     public MemberService()
     {
-        GetMembers(); //varje gång programmet startas hämtas medlemmarna
+        GetMembers(); //Varje gång programmet startar hämtas medlemmarna från filen
     }
 
-
-    //Lägg till medlem i listan
+    //Lägger till medlem i listan
     public void AddMemberToList(Member member)
     {
 
@@ -23,11 +23,13 @@ internal class MemberService
         FileService.SaveToFile(json); //listan skrivs till fil
     }
 
-    //Visa medlemmar
+    //Visar medlemmar
     public List<Member> GetMembers()
 
     {
-        var content = FileService.ReadFromFile();
+
+        var content = FileService.ReadFromFile(@"c:\Code\members.json"); //Sökvägen behöver finnas med här!
+        
 
         if (!string.IsNullOrEmpty(content))
             _memberList = JsonConvert.DeserializeObject<List<Member>>(content)!;
@@ -35,16 +37,14 @@ internal class MemberService
         return _memberList;
     }
 
-    //Visa specifik medlem
+    //Visar specifik medlem
     public Member ViewSpecificMember(string email)
     {
         var member = _memberList.FirstOrDefault(x => x.Email == email);
         return member ?? null!;
     }
-
-
-
-    //Ta bort medlem
+    
+    //Tar bort medlem
     public void RemoveMember(string email)
     {
 
@@ -56,8 +56,7 @@ internal class MemberService
                 _memberList.Remove(member);
 
                 var json = JsonConvert.SerializeObject(_memberList);
-                FileService.SaveToFile(json); //listan skrivs till fil
-            
+                FileService.SaveToFile(json); //listan skrivs till fil           
     }
 
 }
