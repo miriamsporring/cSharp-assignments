@@ -1,12 +1,19 @@
-﻿using ChoirApplication.Models;
+﻿using System.ComponentModel.DataAnnotations;
+using ChoirApplication.Models;
 
 namespace ChoirApplication.Services;
 
-public class MenuService
+/*MenuService presenterar menyn samt tar in och dirigerar menyvalen till respektive ställe.
+ Därifrån hämtas funktionerna från MemberService*/
+
+public class MenuService 
 {
     private MemberService _memberService = new MemberService();
 
-    //för min egen skull i mitt första egna projekt har jag lagt de olika menyalternativen under varann för att lätt se dem i ordning.
+    /*
+    MainMenu - skriver ut menyvalen för programmet
+    Valen är uppbyggda med en do-while-loop som innehåller switch (option -> case,break) som hänvisar vidare till de olika menyvalen.
+     */
     public void MainMenu()  
     {
         var exit = false;
@@ -53,7 +60,7 @@ public class MenuService
 
     }
 
-    //Case 1 - lägg till en medlem
+    //Case 1 - lägg till en medlem 
     public void AddMemberMenu() 
     {
         var member = new Member();
@@ -73,8 +80,15 @@ public class MenuService
 
         Console.Write("Epost: ");
         member.Email = Console.ReadLine()!;
-              
+
         _memberService.AddMemberToList(member);
+
+        /*
+        Jag har försökt lägga till en if-else för att meddela om personen redan finns med i kören.
+        Lyckades med if-satsen: att skriva ut att medlemmen redan finns med; 
+        else-satsen fungerade inte, medlemmen skrevs ändå in i filen.
+        G for trying :)
+        */
 
         Console.Clear() ;
         Console.WriteLine("Medlemmen är tillagd");
@@ -88,8 +102,12 @@ public class MenuService
         Console.WriteLine("Visa alla medlemmar");
         Console.WriteLine("___________________\n");
 
-        foreach (var member in _memberService.GetMembers())
-            Console.WriteLine($"{member.FirstName} {member.LastName}");
+        /*
+        Visar medlemmarnas alla uppgifter så snyggt och prydligt som en konsollapplikation medger,
+        dvs med till exempel radbyten och nån snajdig rad mellan varje medlem :)
+        */
+        foreach (var member in _memberService.GetMembers()) 
+            Console.WriteLine($"{member.FirstName} {member.LastName} \nTel: {member.PhoneNumber} \nEpost:{member.Email} \n\n-*-*-*-*-*-*-*-*-*-*-*\n");
             Console.ReadKey();
     }
 
@@ -107,21 +125,21 @@ public class MenuService
         Console.Clear();
         var member = _memberService.ViewSpecificMember(email!);
 
-
+        //om medlemmen inte finns med
         if (email == null || member == null)
-
             
             Console.WriteLine("Personen är inte medlem i kören");
 
+        //om medlemmen finns med, skriv ut
         else
-            
-            Console.WriteLine($"{member.FirstName} {member.LastName}");
+
+            Console.WriteLine($"{member.FirstName} {member.LastName} \nTel: {member.PhoneNumber} \nEpost:{member.Email}");
 
         Console.ReadKey();
     }
 
     //Case 4 - ta bort medlem
-    private void RemoveMember()   //tar bort oavsett om medlemmen finns
+    private void RemoveMember()   
     {
         Console.Clear();
         Console.WriteLine("Ta bort en medlem ur listan");
@@ -133,7 +151,8 @@ public class MenuService
 
         if (!string.IsNullOrEmpty(email))
         {
-            var member = _memberService.ViewSpecificMember(email);
+            //söker medlemmen via epostadress, tar bort
+            var member = _memberService.ViewSpecificMember(email); 
             if (member != null)
             {
                 _memberService.RemoveMember(email);
@@ -141,13 +160,15 @@ public class MenuService
                 Console.Clear();
                 Console.WriteLine("Medlemmen är borttagen");
 
-            } 
+            }
+            //om personen inte finns med
             else
             {
                 Console.Clear();
                 Console.WriteLine("Personen är inte medlem i kören");
             }
         }
+        //om ingen epostadress fyllts i
         else
             Console.WriteLine("Du måste ange en e-postadress");
 
